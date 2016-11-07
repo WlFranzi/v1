@@ -23,13 +23,15 @@ export default class CornellPulse extends Component {
     let Comp = route.component;
     return (
       <Comp
+        passProps={route.passProps}
         route={route}
         navigator={navigator}
-        onForward={(newComponent) => {
+        onForward={(newComponent, newPassProps) => {
           let nextIndex = route.index + 1
           navigator.push({title: 'Scene ' + nextIndex, 
                           index: nextIndex, 
-                          component: newComponent}); 
+                          component: newComponent,
+                          passProps: newPassProps}); 
         }}
         onBack={() => {
           if (route.index > 0) navigator.pop();
@@ -41,7 +43,7 @@ export default class CornellPulse extends Component {
     return (
       <Navigator
         style={{backgroundColor: 'white'}}
-        initialRoute={ {title: 'Home', index:0, component: Tabs} }
+        initialRoute={ {title: 'Home', index:0, component: Tabs, passProps: {}} }
         renderScene={this.renderScene}
         configureScene={(route, routeStack) => Navigator.SceneConfigs.HorizontalSwipeJump} />
     );

@@ -113,7 +113,7 @@ export default class Dining extends Component {
             return (
                 <TouchableHighlight
                     underlayColor='#DDDDDD'
-                    onPress={() => this.props.onForward(PulsePage, {passProps: rowData})}
+                    onPress={() => this.props.onForward(PulsePage, {rowData: rowData})}
                     style={{backgroundColor: '#F2F2F2'}}>
                     <View style={{flexDirection : 'row', height: 75, alignItems: 'center'}}>         
                         <View style={{marginLeft: 20}}>
@@ -127,7 +127,7 @@ export default class Dining extends Component {
             return (
                 <TouchableHighlight
                     underlayColor='#DDDDDD'
-                    onPress={() => this.props.onForward(PulsePage)}>
+                    onPress={() => this.props.onForward(PulsePage, {rowData: rowData})}>
                     <View style={{justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', height: 75, opacity: 1}}>         
                         <View style={{marginLeft: 20}}>
                             <Text style={{color: '#262626', fontSize: 17, fontFamily: 'Avenir'}}>{shortenName(rowData.location)}</Text>
