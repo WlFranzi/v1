@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import Fetcher from './Fetcher.js';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export default class Tabs extends Component {
@@ -19,7 +20,8 @@ export default class Tabs extends Component {
     render() {
         return(
             <TabBarIOS tintColor='#CE393D'>
-                <TabBarIOS.Item
+                <Icon.TabBarItemIOS
+                    iconName={'ios-pizza'}
                     title="Dining"
                     selected={this.state.selectedTab == "Dining"}
                     onPress={() => this.setState({selectedTab: "Dining"})}>
@@ -28,8 +30,9 @@ export default class Tabs extends Component {
                             display={"Dining"}
                             {...this.props}/>
 
-                </TabBarIOS.Item>
-                <TabBarIOS.Item
+                </Icon.TabBarItemIOS>
+                <Icon.TabBarItemIOS
+                    iconName={'ios-pulse'}
                     title="Fitness"
                     selected={this.state.selectedTab == "Fitness"}
                     onPress={() => this.setState({selectedTab: "Fitness"})}>
@@ -38,7 +41,7 @@ export default class Tabs extends Component {
                             display={"Fitness"}
                             {...this.props}/>
                         
-                </TabBarIOS.Item>
+                </Icon.TabBarItemIOS>
             </TabBarIOS>
         )
     }
