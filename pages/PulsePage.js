@@ -11,6 +11,7 @@ import {
 
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Chart from '../components/chart.js'
 
 export default class PulsePage extends Component {
     constructor(props) {
@@ -48,6 +49,7 @@ export default class PulsePage extends Component {
 
                   </View>
               </LinearGradient>
+              <Chart/>
           </ScrollView>
       );
     }
