@@ -56,14 +56,14 @@ function getTimeSpan(rowData) {
                 return "7:30am - 2:30pm";
             } 
             else {
-                return "Closed All Day";
+                return "Closed";
             }
         } else if (rowData.location === "Terrace") {
             if (date.getDay() >= 1 && date.getDay() <= 5) { // Mon - Fri Schedule
                 return "10:00am - 3:00pm";
             } 
             else {
-                return "Closed All Day";
+                return "Closed";
             }
         }
     }
@@ -109,11 +109,11 @@ export default class Dining extends Component {
         let ratio = (count/peak) > 1 ? 1 : (count/peak); 
 
         if (rowData.status === "Closed") {
-            let timeSpan = rowData.nextEvent ? rowData.nextEvent.start + ' - ' + rowData.nextEvent.end : 'Closed All Day';
+            let timeSpan = rowData.nextEvent ? rowData.nextEvent.start + ' - ' + rowData.nextEvent.end : 'Closed';
             return (
                 <TouchableHighlight
                     underlayColor='#DDDDDD'
-                    onPress={() => this.props.onForward(PulsePage, {rowData: rowData})}
+                    onPress={() => this.props.onForward(PulsePage, {rowData: rowData, ratio: ratio, timeSpan: timeSpan})}
                     style={{backgroundColor: '#F2F2F2'}}>
                     <View style={{flexDirection : 'row', height: 75, alignItems: 'center'}}>         
                         <View style={{marginLeft: 20}}>
@@ -127,7 +127,7 @@ export default class Dining extends Component {
             return (
                 <TouchableHighlight
                     underlayColor='#DDDDDD'
-                    onPress={() => this.props.onForward(PulsePage, {rowData: rowData})}>
+                    onPress={() => this.props.onForward(PulsePage, {rowData: rowData, ratio: ratio, timeSpan: timeSpan})}>
                     <View style={{justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', height: 75, opacity: 1}}>         
                         <View style={{marginLeft: 20}}>
                             <Text style={{color: '#262626', fontSize: 17, fontFamily: 'Avenir'}}>{shortenName(rowData.location)}</Text>

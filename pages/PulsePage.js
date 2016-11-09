@@ -9,6 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import PulsePageStatus from '../components/PulsePageStatus.js';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -44,10 +45,14 @@ export default class PulsePage extends Component {
                     </View>
 
                     <View style={{flex:1}} /> 
-                    {/* Invisible View. Sole purpose is to center the View directly above this one */}
-
+                  {/* Invisible View. Sole purpose is to center the View directly above this one */}
                   </View>
               </LinearGradient>
+
+              <PulsePageStatus rowData={rowData} timeSpan={this.props.passProps.timeSpan} ratio={this.props.passProps.ratio}/>
+
+
+
           </ScrollView>
       );
     }
