@@ -49,7 +49,12 @@ export default class PulsePage extends Component {
 
                   </View>
               </LinearGradient>
-              <Chart/>
+              <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                <View style={{justifyContent: 'center'}}>
+                  <Text> opening hours </Text>
+                </View>
+                <Chart/>
+              </View>
           </ScrollView>
       );
     }

@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-var HOURS = [12, 70, 33, 50, 80, 100, 70, 40, 30, 60, 80, 90, 10, 13, 15]
+var HOURS = [12, 70, 33, 50, 80, 100, 70]
 
 export default class Chart extends Component {
     _return_by_hour() {
@@ -22,11 +22,8 @@ export default class Chart extends Component {
 
   render() {
       return (
-        <View contentContainerStyle={styles.contentContainerMain}>
-          <Text style={styles.title}> Average Buzz today (per hour)</Text>
-          <ScrollView horizontal contentContainerStyle={styles.contentContainer}>
+        <View style={styles.column}>
           {this._return_by_hour()}
-          </ScrollView>
         </View>
       );
     }
@@ -60,9 +57,13 @@ class Columns extends Component {
 }
 
 const styles = StyleSheet.create({ 
+  column: {
+   flexDirection:'row',
+   margin: 10,
+   paddingLeft: 10,
+  },
   barItem: {
-    height: 100,
-    margin: 3,
+    height: 50,
   },
   textTime: {
  }
