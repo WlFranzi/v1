@@ -143,15 +143,16 @@ export default class Dining extends Component {
 
     render() {
         /*Beware Hack: ListView doesn't scroll all the way down to the last member of the list,
-            so solution is to adjust the height of the outermost View (of this widget) so everything fits*/
+            so solution is to adjust the height of the View that immediately dominates <ListView> so everything fits*/
         let page;
         if (this.props.allData.diners.length > 0) {
             page = (
 
-                <View>
+                <View style={{height: 594}}>
                     <Filter filterBy={this.state.filterBy} tap={this.changeFilter}/>
 
                     <ListView
+                        style={{}}
                         dataSource={this.state.dataSource}
                         renderRow={this._renderRow}
                         enableEmptySections={true} />
@@ -161,7 +162,7 @@ export default class Dining extends Component {
             page = (<Refresh refresh={this.props.refresh}/>)
         }
         return (
-            <View style={{width: null, height: 669}}>
+            <View style={{flex:1}}>
                 <StatusBar barStyle='light-content'/>
                 <View style={{backgroundColor: 'black', height: 24}}></View>
                 {page}
