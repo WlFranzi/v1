@@ -9,6 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import Chart from '../components/chart.js'
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -48,7 +49,8 @@ export default class PulsePage extends Component {
 
                   </View>
               </LinearGradient>
-          </ScrollView>
+            <Chart/>
+            </ScrollView>
       );
     }
 }
