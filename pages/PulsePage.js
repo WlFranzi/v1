@@ -12,6 +12,7 @@ import {
 import PulsePageStatus from '../components/PulsePageStatus.js';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Chart from '../components/chart.js'
 
 export default class PulsePage extends Component {
     constructor(props) {
@@ -23,35 +24,42 @@ export default class PulsePage extends Component {
       let rowData = this.props.passProps.rowData;
       return(
           <ScrollView style={{flex: 1}}>
-              <StatusBar barStyle='light-content'/>
-              <View style={{backgroundColor: 'black', height: 24}}></View>
+            <StatusBar barStyle='light-content'/>
+            <View style={{backgroundColor: 'black', height: 24}}></View>
 
-              <LinearGradient
-                style={{height: 75, justifyContent: 'center' }}
-                colors={['#191919', '#4B4B4B']}>
+            <LinearGradient
+              style={{height: 75, justifyContent: 'center' }}
+              colors={['#191919', '#4B4B4B']}>
 
-                  
-                  {/* In order to properly center the Location name while keeping the back-arrow left, I resort to the hacky css below*/}
-                  <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                
+              {/* In order to properly center the Location name while keeping the back-arrow left, I resort to the hacky css below*/}
+              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
 
-                    <TouchableOpacity
-                      style={{flex:1}}
-                      onPress={() => this.props.onBack()}>
-                        <Icon name='ios-arrow-back' size={22} color='white' style={{paddingLeft: 20}}/>
-                    </TouchableOpacity>
+                <TouchableOpacity
+                  style={{flex:1}}
+                  onPress={() => this.props.onBack()}>
+                    <Icon name='ios-arrow-back' size={22} color='white' style={{paddingLeft: 20}}/>
+                </TouchableOpacity>
 
-                    <View style={{flex: 10, justifyContent: 'center', flexDirection: 'row'}}>
-                      <Text style={{fontSize: 19, fontFamily: 'Avenir',  color: 'white'}}>{rowData.location}</Text>
-                    </View>
+                <View style={{flex: 10, justifyContent: 'center', flexDirection: 'row'}}>
+                  <Text style={{fontSize: 19, fontFamily: 'Avenir',  color: 'white'}}>{rowData.location}</Text>
+                </View>
 
-                    <View style={{flex:1}} /> 
-                  {/* Invisible View. Sole purpose is to center the View directly above this one */}
-                  </View>
-              </LinearGradient>
-
-              <PulsePageStatus rowData={rowData} timeSpan={this.props.passProps.timeSpan} ratio={this.props.passProps.ratio}/>
+                <View style={{flex:1}} /> 
+              {/* Invisible View. Sole purpose is to center the View directly above this one */}
+              </View>
+            </LinearGradient>
 
 
+            <PulsePageStatus rowData={rowData} timeSpan={this.props.passProps.timeSpan} ratio={this.props.passProps.ratio}/>
+
+
+            <View style={{flexDirection: 'row', justifyContent: 'center', backgroundColor: '#F2F2F2'}}>
+              <View style={{justifyContent: 'center'}}>
+                <Text> opening hours </Text>
+              </View>
+              <Chart />
+            </View>
 
           </ScrollView>
       );

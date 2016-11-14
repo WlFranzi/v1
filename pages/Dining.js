@@ -69,6 +69,28 @@ function getTimeSpan(rowData) {
     }
 }
 
+function getRatio(rowData) {
+    if (rowData.status === "Closed") {
+        return null;
+    } else {
+        // Experimental Surge represents relative line length at each location
+        let lineLength = rowData.experimentalSurge;
+
+        // (count / peak) represents relative seating capacity at each location (doesn't really apply to non-Dining Hall locations)
+        let count = rowData.count ? rowData.count : 0; 
+        let peak = rowData.peak == 0 ? 1 : rowData.peak; 
+        let ratio = Math.min(1, count/peak); 
+
+        if (rowData.eateryType.descr !== "All You Care To Eat Dining Room" && lineLength) {
+            console.log(rowData.location);
+            return lineLength; // Because lineLength is a better metric for non-Dining-Hall locations 
+        } else {
+            return ratio;
+        }
+
+    }
+}
+
 let cardinalLocations = {
   'North': ["Bear Necessities Grill & C-Store", "Carol's Café", "North Star Dining Room", "Risley Dining Room", "Robert Purcell Marketplace Eatery", "Sweet Sensations"],
   'West': ["Cook House Dining Room", "Becker House Dining Room", "Jansen's Market", "Jansen's Dining Room at Bethe House", "Keeton House Dining Room", "104West!", "Rose House Dining Room"],
@@ -104,9 +126,7 @@ export default class Dining extends Component {
     }
 
     _renderRow(rowData) {
-        let count = rowData.count ? rowData.count : 0; // if no count available, then count is 0.
-        let peak = rowData.peak == 0 ? 1 : rowData.peak; // so we don't divide by 0 later on in UsageBar
-        let ratio = (count/peak) > 1 ? 1 : (count/peak); 
+        let ratio = getRatio(rowData);
 
         if (rowData.status === "Closed") {
             let timeSpan = rowData.nextEvent ? rowData.nextEvent.start + ' - ' + rowData.nextEvent.end : 'Closed';

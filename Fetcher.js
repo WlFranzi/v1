@@ -37,7 +37,6 @@ export default class Fetcher extends Component {
 
     _fetchAllData() {
         var endpoint = 'http://www.cornellpulse.com:3000/api';
-
         fetch(endpoint)
             .then((response) => response.json())
             .then((responseJSON) => {
