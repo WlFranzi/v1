@@ -15,12 +15,16 @@ Dining Hall Overview
 
 Detailed Dining Page1
 
+
+
 <img src="./img/03_PulsePage.png" alt="alt text" width="250" height="400">
 
 Detailed Dining Page2
 <img src="./img/04_PulsePage.png" alt="alt text" width="250" height="400">
 
 Detailed Dining Page Bottom
+
+
 
 <img src="./img/05_PulsePage.png" alt="alt text" width="250" height="400">
 
